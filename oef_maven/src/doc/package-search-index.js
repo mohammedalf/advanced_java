@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"be.kdg.smartphones"},{"l":"be.kdg.smartphones.data"},{"l":"be.kdg.smartphones.generics"},{"l":"be.kdg.smartphones.model"}];updateSearchResults();
