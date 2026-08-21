@@ -1,0 +1,83 @@
+package be.kdg.week6_Persistentie.jdbc;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DemoConnectionPreparedStatements {
+    public static void main(String[] args) {
+        try (
+                // Stap 1: verbinding maken
+                Connection connection = DriverManager.getConnection(
+
+                        // HSQLDB in FILE mode:
+                        // Database wordt op schijf opgeslagen
+                        "jdbc:hsqldb:file:dbData/demo",
+
+                        // HSQLDB in MEMORY mode:
+                        // Database draait enkel in RAM
+                        // "jdbc:hsqldb:mem:memdemo",
+
+                        // HSQLDB in SERVER mode:
+                        // Verbinding met een draaiende HSQLDB-server
+                        // "jdbc:hsqldb:hsql://localhost/demo",
+
+                        "sa",
+                        ""
+                );
+                ){
+
+            System.out.println("Verbinding met database gelukt!");
+
+            // Stap 2: Statement maken
+            //een Statement is het object waarmee je straks sql naar de database stuurt
+            Statement statement = connection.createStatement();
+
+            System.out.println("Statement aangemaakt!");
+
+            // Stap 3a: algemene SQL uitvoeren met PreparedStatements
+            String sql = "INSERT INTO studenten (naam, score) VALUES (?, ?)";
+            PreparedStatement prep = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            prep.setString(1, "MO");
+            prep.setDouble(2,16.2);
+            int count = prep.executeUpdate();
+            System.out.println("Aantal toegevoegde rijen via PreparedStatement: " + count);
+
+            //nieuw op p41: automatisch gegenereerde PK opvragen
+            ResultSet generatedKeys = prep.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                int nieuweId = generatedKeys.getInt(1);
+
+                System.out.println("Nieuwe automatisch gegenereerde id: " + nieuweId);
+            }
+            // Stap 3c: SELECT
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT * FROM studenten"
+            );
+
+            System.out.println("SELECT uitgevoerd!");
+
+            System.out.println("-------------------------------------------------------");
+            //Stap 4: Verwerk het resultaat
+            List<Student> myList = new ArrayList<>();
+            ResultSet resultSet1 = statement.executeQuery("SELECT * FROM studenten");
+            while (resultSet1.next()) {
+                myList.add(new Student(
+                        resultSet1.getInt("id"),
+                        resultSet1.getString("naam"),
+                        resultSet1.getDouble("score")
+                ));
+            }
+            System.out.println("opgehaalde data: ");
+            myList.forEach(student -> {
+                System.out.println(student);
+            });
+
+
+
+        } catch (SQLException e) {
+            System.err.println("Databasefout: " + e.getMessage());
+        }
+    }
+}
