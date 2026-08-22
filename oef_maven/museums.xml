@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<musea>
+    <museum children-allowed="true">
+        <name>MAS</name>
+        <city>Antwerpen</city>
+        <permanent>
+            <name>Vaste collectie</name>
+            <artists>Kunstenaar A</artists>
+            <artists>Kunstenaar B</artists>
+            <from>2024-01-01</from>
+            <to>2026-12-31</to>
+        </permanent>
+        <special>
+            <name>Speciale tentoonstelling</name>
+            <artists>Kunstenaar C</artists>
+            <from>2026-08-01</from>
+            <to>2026-10-01</to>
+        </special>
+    </museum>
+</musea>

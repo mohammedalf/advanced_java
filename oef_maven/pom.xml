@@ -48,6 +48,21 @@
             <artifactId>hsqldb</artifactId>
             <version>2.7.2</version>
         </dependency>
+
+
+        <!-- JAXB API -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
+        <!-- JAXB implementatie -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>4.0.1</version>
+        </dependency>
     </dependencies>
 
 </project>
