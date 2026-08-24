@@ -1,6 +1,5 @@
-package be.kdg.week8_Datastructuren_en_algoritmes_deel1;
+package be.kdg.week8_Datastructuren_en_algoritmes_deel1.bigO;
 
-import java.rmi.server.RemoteRef;
 import java.util.Random;
 
 public class DemoSorteren {

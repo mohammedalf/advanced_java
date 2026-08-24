@@ -1,0 +1,55 @@
+┌──────────────────────────────────────────────────────────────┐
+│ 1. NEW                                                      │
+│ De thread is aangemaakt, maar nog NIET gestart.             │
+│                                                              │
+│ Voorbeeld:                                                   │
+│ Thread t = new Thread(taak);                                 │
+│                                                              │
+│ → toestand: NEW                                              │
+├──────────────────────────────────────────────────────────────┤
+│ 2. RUNNABLE                                                 │
+│ De thread is gestart en kan uitgevoerd worden.              │
+│ Hij draait effectief, of wacht even op CPU-tijd.            │
+│                                                              │
+│ Voorbeeld:                                                   │
+│ t.start();                                                   │
+│                                                              │
+│ → toestand: RUNNABLE                                         │
+├──────────────────────────────────────────────────────────────┤
+│ 3. WAITING                                                  │
+│ De thread wacht ZONDER vaste eindtijd op iets anders.       │
+│                                                              │
+│ Voorbeeld:                                                   │
+│ t.join();                                                    │
+│                                                              │
+│ → de huidige thread wacht tot t klaar is                     │
+├──────────────────────────────────────────────────────────────┤
+│ 4. TIMED_WAITING                                            │
+│ De thread wacht voor een BEPAALDE tijd.                     │
+│                                                              │
+│ Voorbeeld:                                                   │
+│ Thread.sleep(3000);                                          │
+│                                                              │
+│ → wacht maximaal 3 seconden                                  │
+├──────────────────────────────────────────────────────────────┤
+│ 5. BLOCKED                                                  │
+│ De thread wil verder, maar kan niet omdat een andere        │
+│ thread bijvoorbeeld een synchronized lock bezit.            │
+│                                                              │
+│ Voorbeeld:                                                   │
+│ synchronized (object) {                                      │
+│     // andere thread zit hier al in                          │
+│ }                                                            │
+│                                                              │
+│ → deze thread moet wachten op de lock                        │
+├──────────────────────────────────────────────────────────────┤
+│ 6. TERMINATED                                               │
+│ De run()-methode is volledig klaar.                         │
+│ De thread is beëindigd en kan niet opnieuw gestart worden.  │
+│                                                              │
+│ Voorbeeld:                                                   │
+│ public void run() {                                          │
+│     System.out.println("klaar");                             │
+│ }                                                            │
+│ // einde run() → TERMINATED                                  │
+└──────────────────────────────────────────────────────────────┘

@@ -70,6 +70,26 @@
             <artifactId>gson</artifactId>
             <version>2.10</version>
         </dependency>
-    </dependencies>
 
+        <!-- JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>21.0.8</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>
+                        be.kdg.week8_Datastructuren_en_algoritmes_deel1.recursie.MainSierpinski
+                    </mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
