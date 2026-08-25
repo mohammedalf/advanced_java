@@ -1,0 +1,13 @@
+wait()      → "ik wacht"
+notify()    → "één van jullie mag weer proberen"
+notifyAll() → "iedereen mag weer proberen"
+
+RUNNABLE
+   ↓
+ wait()
+   ↓
+WAITING
+   ↓
+notify() / notifyAll()
+   ↓
+RUNNABLE
